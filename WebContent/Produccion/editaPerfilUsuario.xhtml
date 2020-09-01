@@ -1,0 +1,61 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/Plantillas_Ecuador/template.xhtml">
+
+	<ui:define name="title">Perfil de Usuario</ui:define>
+	<ui:define name="viewname">
+		<li><p:link outcome="/inicio">Inicio</p:link></li>
+	</ui:define>
+
+	<ui:define name="content">
+		<h1>Actualiza tus Datos !!!</h1>
+		<h:form id="formSolicitud">
+			<p:growl id="growl" showDetail="true" />
+			<div class="card">
+				<p:panelGrid columns="1" layout="grid"
+					styleClass="ui-panelgrid-blank lesspad">
+					<p:graphicImage url="#{ControladorActualizaPerfil.imagenUsr}"
+						alt="CONFIA" title="CONFIA" width="15%" height="80%" />
+					<h4>Razón Social</h4>
+					<h:outputText value="#{ControladorActualizaPerfil.usuarioNm}" />
+					<h4>Ruc/Cédula</h4>
+					<h:outputText value="#{ControladorActualizaPerfil.usuarioCed}" />
+				</p:panelGrid>
+			</div>
+			<div class="card">
+				<p:panelGrid columns="4" layout="grid"
+					styleClass="ui-panelgrid-blank lesspad">
+					<h:outputText value="Dirección:" />
+					<p:inputText value="#{ControladorActualizaPerfil.direcClie}" required="true"
+							id="txtDir" style="text-transform:uppercase;;width: 98%"
+							onkeyup="javascript:this.value=this.value.toUpperCase();"></p:inputText>
+					<h:outputText value="Teléfono:" />
+					<p:inputText value="#{ControladorActualizaPerfil.telefClie}" required="true"
+							id="txtTel" style="text-transform:uppercase;;width: 98%"
+							onkeyup="javascript:this.value=this.value.toUpperCase();" ></p:inputText>
+					<h:outputText value="Contactos:" />
+					<p:inputText value="#{ControladorActualizaPerfil.contClie}" required="true"
+							id="txtCon" style="text-transform:uppercase;;width: 98%"
+							onkeyup="javascript:this.value=this.value.toUpperCase();"></p:inputText>
+					<h:outputText value="Correo:" />
+					<p:inputText value="#{ControladorActualizaPerfil.correClie}"  required="true" validatorMessage="Correo no Válido"
+							id="txtCor" style="width: 98%">
+						<f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+					</p:inputText>
+				</p:panelGrid>
+
+				<p:commandButton value="Guardar"
+					action="#{ControladorActualizaPerfil.guardar}"
+					process="@this,formSolicitud:txtDir,formSolicitud:txtTel,formSolicitud:txtCon,formSolicitud:txtCor"
+					update="growl">
+				</p:commandButton>
+
+			</div>
+
+
+		</h:form>
+	</ui:define>
+</ui:composition>

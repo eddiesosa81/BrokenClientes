@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/Plantillas_Ecuador/loginTemplateEc.xhtml">
+	<ui:define name="tituloPagina">
+		Confia-Login
+	</ui:define>
+
+	<ui:define name="logoCabecera">
+		<p:graphicImage name="imagenes/Logo-Confia.png"
+			library="ecuador-layout" />
+	</ui:define>
+	<ui:define name="contenido">
+		<h:form id="formulario">
+			<p:growl id="growl" showDetail="true" />
+			<p:graphicImage value="/imagenes/Logo-Confia.png"
+				library="ecuador-layout" />
+			<p:inputText placeholder="Username"
+				value="#{ControladorIngreso.usuario}" />
+			<p:password placeholder="Password"
+				value="#{ControladorIngreso.passwd}" />
+			<div class="separator"></div>
+			<p:commandButton ajax="false" value="Ingresar"
+				action="#{ControladorIngreso.validaUsr}" process="@this"
+				update="growl">
+			</p:commandButton>
+			<a class="subinfo"> <span>Olvidaste tu contraseña ?
+					contacta al administrador</span>
+			</a>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

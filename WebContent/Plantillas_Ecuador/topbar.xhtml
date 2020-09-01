@@ -1,0 +1,24 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<div class="layout-topbar">
+		<a href="#" id="topbar-menu-button"> <i
+			class="fa fa-angle-left arrow"></i> <i class="fa fa-angle-up mobile"></i>
+		</a> 
+		<a id="topbar-profile-menu-button" href="#"> 
+			<h:form id="frmtopBar">
+				<span>#{ControladorTopBar.usuarioId}</span>
+				<p:graphicImage url="#{ControladorTopBar.imagenUsr}" library="ecuador-layout" styleClass="topbar-profile" />
+            	<i class="fa fa-angle-down"></i>
+			</h:form>
+		</a>
+		<ul id="topbar-usermenu">
+			<li><a href="/BrokenClientes/Produccion/editaPerfilUsuario.jsf"> <i class="fa fa-fw fa-user"></i> <span
+					class="topbar-item-name">Profile</span> 
+			</a></li>
+		</ul>
+	</div>
+</ui:composition>
